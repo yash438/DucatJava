@@ -1,0 +1,46 @@
+//combo box in swing
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+class JComboBoxDemo extends JFrame implements ItemListener
+{
+//var
+JComboBox box;
+JLabel lb1;
+JComboBoxDemo()
+{
+Container c=getContentPane();
+c.setLayout(null);
+box=new JComboBox();
+//add items to it
+box.addItem("India");
+box.addItem("Amereica");
+box.addItem("Germany");
+box.addItem("France");
+box.addItem("Japan");
+//set location of combo box
+box.setBounds(100,50,100,40);
+//add combo box to the combo box
+c.add(box);
+lb1=new JLabel();
+lb1.setBounds(100,200,200,40);
+c.add(lb1);
+//attach item listener to combo box
+box.addItemListener(this);
+setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+}
+public void itemStateChanged(ItemEvent ie)
+{
+//know which item is selected
+String str=(String)box.getSelectedItem();
+//disp the selected item in label
+lb1.setText("you selected:"+str);
+}
+public static void main(String...s)
+{
+JComboBoxDemo demo=new JComboBoxDemo();
+demo.setTitle("My combobox");
+demo.setSize(500,400);
+demo.setVisible(true);
+}
+}
